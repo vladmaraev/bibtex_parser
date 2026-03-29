@@ -189,7 +189,6 @@ defmodule BibtexParser.Parser do
 
   @doc false
   def parse_type(input) do
-    Logger.debug("Parsing type: #{input}")
     result = type(input)
 
     case result do
@@ -203,8 +202,6 @@ defmodule BibtexParser.Parser do
   end
 
   def parse_label(input) do
-    Logger.debug("Parsing label: #{input}")
-
     result = label(input)
 
     case result do
@@ -218,8 +215,6 @@ defmodule BibtexParser.Parser do
   end
 
   def parse_tags(input) do
-    Logger.debug("Parsing tags: #{input}")
-
     result = parse_tag(input)
 
     case result do
@@ -235,8 +230,6 @@ defmodule BibtexParser.Parser do
   end
 
   def parse_tag(input) do
-    Logger.debug("Parsing tag: #{input}")
-
     with {:ok, name, rest} <- parse_tag_name(input),
          {:ok, cont, rest} <- parse_tag_content(rest) do
       {:ok, {name, cont}, rest}
@@ -250,8 +243,6 @@ defmodule BibtexParser.Parser do
   end
 
   def parse_tag_name(input) do
-    Logger.debug("Parsing tag name: #{input}")
-
     result = tag(input)
 
     case result do
@@ -264,8 +255,6 @@ defmodule BibtexParser.Parser do
   end
 
   def parse_tag_content(input) do
-    Logger.debug("Parsing tag content: #{input}")
-
     result = tag_content(input)
 
     case result do
