@@ -78,7 +78,7 @@ defmodule BibtexParser.Parser do
   trimmable =
     choice([
       replace(ascii_char([?\n]), ?\s) |> concat(whitespaces()),
-      choice([ascii_char([?\ ]), ascii_char([?\ ])]) |> concat(whitespaces()),
+      choice([ascii_char([?\s]), ascii_char([?\s])]) |> concat(whitespaces()),
       ascii_char([])
     ])
 
@@ -145,7 +145,7 @@ defmodule BibtexParser.Parser do
     |> concat(symbol())
     |> repeat(
       lookahead_not(choice([ascii_char([?,]), ascii_char([?\s])]))
-      |> ascii_char([?A..?Z, ?a..?z, ?., ?0..?9, ?,, ?:, ?/])
+      |> ascii_char([?A..?Z, ?a..?z, ?., ?0..?9, ?,, ?:, ?/, ?-, ?_])
     )
     |> concat(whitespaces())
     |> concat(ignore_optional_char(?,))

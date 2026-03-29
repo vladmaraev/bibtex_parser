@@ -8,7 +8,7 @@ defmodule BibtexParser.Test.Tag do
 
     {:ok, result, rest, _, _, _} = Parser.tag(input)
 
-    assert result == 'foobar'
+    assert result == ~c"foobar"
     assert rest == "=\s\"baz\""
   end
 
@@ -17,7 +17,7 @@ defmodule BibtexParser.Test.Tag do
 
     {:ok, result, rest, _, _, _} = Parser.tag(input)
 
-    assert result == 'foobar'
+    assert result == ~c"foobar"
     assert rest == "=\s\"baz\""
   end
 
@@ -26,7 +26,7 @@ defmodule BibtexParser.Test.Tag do
 
     {:ok, result, rest, _, _, _} = Parser.tag(input)
 
-    assert result == 'foobar'
+    assert result == ~c"foobar"
     assert rest == "= 1234"
   end
 end

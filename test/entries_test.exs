@@ -26,6 +26,52 @@ defmodule BibtexParser.Test.Entries do
     {:ok, ^result, ""} = Parser.parse_entry(input)
   end
 
+  test "Entry Test Underscore" do
+    input = """
+    @misc{ Nobody_06,
+           author = "Nobody Jr",
+           title = "My Article",
+           year = 2006,
+          pages = "1--10", }
+    """
+
+    result = %{
+      label: "Nobody_06",
+      tags: [
+        author: "Nobody Jr",
+        title: "My Article",
+        year: "2006",
+        pages: "1--10"
+      ],
+      type: "misc"
+    }
+
+    {:ok, ^result, ""} = Parser.parse_entry(input)
+  end
+
+  test "Entry Test Dash" do
+    input = """
+    @misc{ Nobody-06,
+           author = "Nobody Jr",
+           title = "My Article",
+           year = 2006,
+          pages = "1--10", }
+    """
+
+    result = %{
+      label: "Nobody-06",
+      tags: [
+        author: "Nobody Jr",
+        title: "My Article",
+        year: "2006",
+        pages: "1--10"
+      ],
+      type: "misc"
+    }
+
+    {:ok, ^result, ""} = Parser.parse_entry(input)
+  end
+
   test "Entry Test 1" do
     input = """
     @misc{ Nobody06,

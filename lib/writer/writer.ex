@@ -16,7 +16,7 @@ defmodule BibtexParser.Writer do
       entry.tags
       |> Enum.sort_by(&elem(&1, 0))
       |> Enum.filter(fn {_tag, content} ->
-        content != ''
+        content != ~c""
       end)
       |> Enum.reduce(lines, fn {tag, value}, lines ->
         line = "    #{tag} = {#{value}}"
